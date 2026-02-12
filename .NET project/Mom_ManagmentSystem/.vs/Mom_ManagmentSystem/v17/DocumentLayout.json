@@ -1,0 +1,119 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Users\\Siya\\source\\repos\\Mom_ManagmentSystem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{29BE0AF2-B018-4278-BFD9-FE6433060A26}|Mom_ManagmentSystem.csproj|d:\\users\\siya\\source\\repos\\mom_managmentsystem\\views\\meeting\\meetinglist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{29BE0AF2-B018-4278-BFD9-FE6433060A26}|Mom_ManagmentSystem.csproj|solutionrelative:views\\meeting\\meetinglist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29BE0AF2-B018-4278-BFD9-FE6433060A26}|Mom_ManagmentSystem.csproj|d:\\users\\siya\\source\\repos\\mom_managmentsystem\\views\\department\\departmentlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{29BE0AF2-B018-4278-BFD9-FE6433060A26}|Mom_ManagmentSystem.csproj|solutionrelative:views\\department\\departmentlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29BE0AF2-B018-4278-BFD9-FE6433060A26}|Mom_ManagmentSystem.csproj|d:\\users\\siya\\source\\repos\\mom_managmentsystem\\views\\staff\\stafflist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{29BE0AF2-B018-4278-BFD9-FE6433060A26}|Mom_ManagmentSystem.csproj|solutionrelative:views\\staff\\stafflist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29BE0AF2-B018-4278-BFD9-FE6433060A26}|Mom_ManagmentSystem.csproj|d:\\users\\siya\\source\\repos\\mom_managmentsystem\\views\\meetingvenue\\meetingvenuelist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{29BE0AF2-B018-4278-BFD9-FE6433060A26}|Mom_ManagmentSystem.csproj|solutionrelative:views\\meetingvenue\\meetingvenuelist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29BE0AF2-B018-4278-BFD9-FE6433060A26}|Mom_ManagmentSystem.csproj|d:\\users\\siya\\source\\repos\\mom_managmentsystem\\views\\meetingtype\\meetingtypelist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{29BE0AF2-B018-4278-BFD9-FE6433060A26}|Mom_ManagmentSystem.csproj|solutionrelative:views\\meetingtype\\meetingtypelist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29BE0AF2-B018-4278-BFD9-FE6433060A26}|Mom_ManagmentSystem.csproj|d:\\users\\siya\\source\\repos\\mom_managmentsystem\\views\\meetingmember\\meetingmemberlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{29BE0AF2-B018-4278-BFD9-FE6433060A26}|Mom_ManagmentSystem.csproj|solutionrelative:views\\meetingmember\\meetingmemberlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "StaffList.cshtml",
+              "DocumentMoniker": "D:\\Users\\Siya\\source\\repos\\Mom_ManagmentSystem\\Views\\Staff\\StaffList.cshtml",
+              "RelativeDocumentMoniker": "Views\\Staff\\StaffList.cshtml",
+              "ToolTip": "D:\\Users\\Siya\\source\\repos\\Mom_ManagmentSystem\\Views\\Staff\\StaffList.cshtml",
+              "RelativeToolTip": "Views\\Staff\\StaffList.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-28T06:35:59.633Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MeetingVenueList.cshtml",
+              "DocumentMoniker": "D:\\Users\\Siya\\source\\repos\\Mom_ManagmentSystem\\Views\\MeetingVenue\\MeetingVenueList.cshtml",
+              "RelativeDocumentMoniker": "Views\\MeetingVenue\\MeetingVenueList.cshtml",
+              "ToolTip": "D:\\Users\\Siya\\source\\repos\\Mom_ManagmentSystem\\Views\\MeetingVenue\\MeetingVenueList.cshtml",
+              "RelativeToolTip": "Views\\MeetingVenue\\MeetingVenueList.cshtml",
+              "ViewState": "AgIAAL4AAAAAAAAAAADwv9UAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-28T06:35:33.813Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MeetingTypeList.cshtml",
+              "DocumentMoniker": "D:\\Users\\Siya\\source\\repos\\Mom_ManagmentSystem\\Views\\MeetingType\\MeetingTypeList.cshtml",
+              "RelativeDocumentMoniker": "Views\\MeetingType\\MeetingTypeList.cshtml",
+              "ToolTip": "D:\\Users\\Siya\\source\\repos\\Mom_ManagmentSystem\\Views\\MeetingType\\MeetingTypeList.cshtml",
+              "RelativeToolTip": "Views\\MeetingType\\MeetingTypeList.cshtml",
+              "ViewState": "AgIAALUAAAAAAAAAAADwv8wAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-28T06:34:59.23Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MeetingMemberList.cshtml",
+              "DocumentMoniker": "D:\\Users\\Siya\\source\\repos\\Mom_ManagmentSystem\\Views\\MeetingMember\\MeetingMemberList.cshtml",
+              "RelativeDocumentMoniker": "Views\\MeetingMember\\MeetingMemberList.cshtml",
+              "ToolTip": "D:\\Users\\Siya\\source\\repos\\Mom_ManagmentSystem\\Views\\MeetingMember\\MeetingMemberList.cshtml",
+              "RelativeToolTip": "Views\\MeetingMember\\MeetingMemberList.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAO0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-28T06:34:30.367Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MeetingList.cshtml",
+              "DocumentMoniker": "D:\\Users\\Siya\\source\\repos\\Mom_ManagmentSystem\\Views\\Meeting\\MeetingList.cshtml",
+              "RelativeDocumentMoniker": "Views\\Meeting\\MeetingList.cshtml",
+              "ToolTip": "D:\\Users\\Siya\\source\\repos\\Mom_ManagmentSystem\\Views\\Meeting\\MeetingList.cshtml",
+              "RelativeToolTip": "Views\\Meeting\\MeetingList.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAMsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-28T06:33:52.122Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DepartmentList.cshtml",
+              "DocumentMoniker": "D:\\Users\\Siya\\source\\repos\\Mom_ManagmentSystem\\Views\\Department\\DepartmentList.cshtml",
+              "RelativeDocumentMoniker": "Views\\Department\\DepartmentList.cshtml",
+              "ToolTip": "D:\\Users\\Siya\\source\\repos\\Mom_ManagmentSystem\\Views\\Department\\DepartmentList.cshtml",
+              "RelativeToolTip": "Views\\Department\\DepartmentList.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAK8AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-28T06:33:15.756Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
