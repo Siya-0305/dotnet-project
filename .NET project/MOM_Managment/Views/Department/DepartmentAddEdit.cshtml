@@ -1,0 +1,93 @@
+﻿@model Mom_Managment.Models.DepartmentViewModel
+
+@{
+    ViewData["Title"] = Model.DepartmentID == 0 ? "Add Department" : "Edit Department";
+}
+
+<div class="pagetitle">
+    <h1>@ViewData["Title"]</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a asp-controller="Home" asp-action="Index">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a asp-controller="Department" asp-action="Index">Departments</a>
+            </li>
+            <li class="breadcrumb-item active">@ViewData["Title"]</li>
+        </ol>
+    </nav>
+</div>
+
+<section class="section">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="bi bi-building text-primary me-2"></i>
+                        Department Information
+                    </h5>
+
+                    <form asp-controller="Department" asp-action="Save" method="post" class="row g-3 needs-validation" novalidate>
+                        <input asp-for="DepartmentID" type="hidden" />
+                        <input asp-for="Created" type="hidden" />
+
+                        <div class="col-md-12">
+                            <label asp-for="DepartmentName" class="form-label">Department Name *</label>
+                            <input asp-for="DepartmentName" class="form-control" placeholder="Enter department name" />
+                            <span asp-validation-for="DepartmentName" class="text-danger"></span>
+                            @* <div class="invalid-feedback"> *@
+                            @*     Please provide a valid department name (2-100 characters). *@
+                            @* </div> *@
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Created Date</label>
+                            <input value="@Model.Created.ToString("yyyy-MM-dd")" class="form-control" readonly />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Last Modified</label>
+                            <input value="@(Model.DepartmentID == 0 ? "New Record" : Model.Modified.ToString("yyyy-MM-dd"))" class="form-control" readonly />
+                        </div>
+
+                        <div class="col-12">
+                            <hr class="my-4">
+                            <div class="d-flex gap-2">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-check-lg me-1"></i>
+                                    @(Model.DepartmentID == 0 ? "Create Department" : "Update Department")
+                                </button>
+                                <a asp-controller="Department" asp-action="Index" class="btn btn-secondary">
+                                    <i class="bi bi-arrow-left me-1"></i>
+                                    Back to List
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="bi bi-info-circle text-info me-2"></i>
+                        Guidelines
+                    </h5>
+                    <div class="alert alert-info">
+                        <h6 class="alert-heading">Department Guidelines:</h6>
+                        <ul class="mb-0 small">
+                            <li>Department name should be unique</li>
+                            <li>Use clear and descriptive names</li>
+                            <li>Fields marked with * are required</li>
+                            <li>@(Model.DepartmentID == 0 ? "New department will be created" : "Existing department will be updated")</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,143 @@
+﻿@model Mom_Managment.Models.StaffModelView
+
+@{
+    ViewData["Title"] = Model.StaffId == 0 ? "Add Staff" : "Edit Staff";
+}
+
+<div class="pagetitle">
+    <h1>@ViewData["Title"]</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a asp-controller="Home" asp-action="Index">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a asp-controller="Staff" asp-action="StaffList">Staff</a>
+            </li>
+            <li class="breadcrumb-item active">@ViewData["Title"]</li>
+        </ol>
+    </nav>
+</div>
+
+<section class="section">
+    <div class="row">
+
+        <!-- FORM COLUMN -->
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body">
+
+                    <h5 class="card-title">
+                        <i class="bi bi-person-badge text-primary me-2"></i>
+                        Staff Information
+                    </h5>
+
+                    <form asp-controller="Staff"
+                          asp-action="Save"
+                          method="post"
+                          class="row g-3 needs-validation"
+                          novalidate>
+
+                        @Html.AntiForgeryToken()
+                        <input asp-for="StaffId" type="hidden" />
+
+                        <div class="col-md-12">
+                            <label asp-for="StaffName" class="form-label">
+                                Staff Name *
+                            </label>
+                            <input asp-for="StaffName"
+                                   class="form-control"
+                                   placeholder="Enter staff name" />
+                            <span asp-validation-for="StaffName" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label asp-for="DepartmentName" class="form-label">
+                                Department *
+                            </label>
+                            <input asp-for="DepartmentName"
+                                   class="form-control"
+                                   placeholder="Enter department name" />
+                            <span asp-validation-for="DepartmentName" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label asp-for="MobileNo" class="form-label">
+                                Mobile Number *
+                            </label>
+                            <input asp-for="MobileNo"
+                                   class="form-control"
+                                   placeholder="Enter mobile number" />
+                            <span asp-validation-for="MobileNo" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label asp-for="EmailAddress" class="form-label">
+                                Email Address *
+                            </label>
+                            <input asp-for="EmailAddress"
+                                   class="form-control"
+                                   placeholder="Enter email address" />
+                            <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-12">
+                            <hr class="my-4" />
+                            <div class="d-flex gap-2">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-check-lg me-1"></i>
+                                    @(Model.StaffId == 0 ? "Create Staff" : "Update Staff")
+                                </button>
+
+                                <a asp-controller="Staff"
+                                   asp-action="StaffList"
+                                   class="btn btn-secondary">
+                                    <i class="bi bi-arrow-left me-1"></i>
+                                    Back to List
+                                </a>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- GUIDELINES COLUMN -->
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-body">
+
+                    <h5 class="card-title">
+                        <i class="bi bi-info-circle text-info me-2"></i>
+                        Guidelines
+                    </h5>
+
+                    <div class="alert alert-info">
+                        <h6 class="alert-heading">Staff Guidelines:</h6>
+                        <ul class="mb-0 small">
+                            <li>Staff name should be clear and valid</li>
+                            <li>Department must exist in system</li>
+                            <li>Mobile number should be 10 digits</li>
+                            <li>Email address must be valid</li>
+                            <li>
+                                @(Model.StaffId == 0
+                                                                ? "New staff will be created"
+                                                                : "Existing staff will be updated")
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

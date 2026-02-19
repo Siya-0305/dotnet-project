@@ -1,0 +1,84 @@
+﻿@{
+    ViewData["Title"] = "Register";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Create Account - MOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    @* <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"> *@
+    <link rel="stylesheet" href="~/css/style.css" />
+</head>
+<body class="auth-bg">
+
+    <div class="auth-card">
+        <div class="text-center mb-4">
+            <h4 class="fw-bold text-primary">Join MOM System</h4>
+            <h2 class="fw-bold">Create Account</h2>
+            <p class="text-muted">
+                Join the meeting management system to organize and track meetings efficiently
+            </p>
+        </div>
+
+        <form asp-action="Register" method="post">
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Username</label>
+                    <input type="text" name="Username" class="form-control" placeholder="Enter username" required />
+                    <small class="text-muted">3–50 characters required</small>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Role</label>
+                    <select name="Role" class="form-select" required>
+                        <option value="">Select Role</option>
+                        <option value="Admin">Admin</option>
+                        <option value="Staff">Staff</option>
+                        <option value="Participant">Participant</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Password</label>
+                    <input type="password" name="Password" class="form-control" placeholder="Enter password" required />
+                    <small class="text-muted">Minimum 6 characters</small>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Confirm Password</label>
+                    <input type="password" name="ConfirmPassword" class="form-control" placeholder="Confirm password" required />
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Link Staff Member (Optional)</label>
+                <select name="StaffId" class="form-select">
+                    <option value="">Select Staff Member</option>
+                    <option value="1">Staff 1</option>
+                    <option value="2">Staff 2</option>
+                </select>
+                <small class="text-muted">Link to a staff member for better tracking</small>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 py-2">
+                Create Account
+            </button>
+        </form>
+
+        <div class="text-center mt-3">
+            <p class="mb-0">
+                Already have an account?
+                <a asp-action="Login" class="text-primary fw-semibold">Sign in here</a>
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

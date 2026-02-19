@@ -1,0 +1,165 @@
+﻿@model Mom_Managment.Models.MeetingViewModel
+
+@{
+    ViewData["Title"] = Model.MeetingId == 0 ? "Add Meeting" : "Edit Meeting";
+}
+
+<div class="pagetitle">
+    <h1>@ViewData["Title"]</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a asp-controller="Home" asp-action="Index">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a asp-controller="Meeting" asp-action="MeetingList">Meetings</a>
+            </li>
+            <li class="breadcrumb-item active">@ViewData["Title"]</li>
+        </ol>
+    </nav>
+</div>
+
+<section class="section">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="bi bi-calendar-event text-primary me-2"></i>
+                        Meeting Information
+                    </h5>
+
+                    <form asp-controller="Meeting" asp-action="Save" method="post" class="row g-3 needs-validation" novalidate>
+                        <input asp-for="MeetingId" type="hidden" />
+
+                        <div class="col-md-6">
+                            <label asp-for="MeetingDate" class="form-label">Meeting Date *</label>
+                            <input asp-for="MeetingDate" type="date" class="form-control" required />
+                            <span asp-validation-for="MeetingDate" class="text-danger"></span>
+                            <div class="invalid-feedback">
+                                Please provide a valid meeting date.
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label asp-for="MeetingVenueName" class="form-label">Meeting Venue *</label>
+                            <select asp-for="MeetingVenueName" class="form-select" required>
+                                <option value="">Select Venue</option>
+                                <option value="Conference Room A">Conference Room A</option>
+                                <option value="Conference Room B">Conference Room B</option>
+                                <option value="Main Hall">Main Hall</option>
+                                <option value="Training Room">Training Room</option>
+                                <option value="Board Room">Board Room</option>
+                                <option value="Online Meeting">Online Meeting</option>
+                            </select>
+                            <span asp-validation-for="MeetingVenueName" class="text-danger"></span>
+                            <div class="invalid-feedback">
+                                Please select a meeting venue.
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label asp-for="MeetingTypeName" class="form-label">Meeting Type *</label>
+                            <select asp-for="MeetingTypeName" class="form-select" required>
+                                <option value="">Select Meeting Type</option>
+                                <option value="Project Meeting">Project Meeting</option>
+                                <option value="Management Meeting">Management Meeting</option>
+                                <option value="Training Session">Training Session</option>
+                                <option value="Team Meeting">Team Meeting</option>
+                                <option value="Board Meeting">Board Meeting</option>
+                                <option value="Client Meeting">Client Meeting</option>
+                            </select>
+                            <span asp-validation-for="MeetingTypeName" class="text-danger"></span>
+                            <div class="invalid-feedback">
+                                Please select a meeting type.
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label asp-for="DepartmentName" class="form-label">Department *</label>
+                            <select asp-for="DepartmentName" class="form-select" required>
+                                <option value="">Select Department</option>
+                                <option value="IT">IT</option>
+                                <option value="HR">HR</option>
+                                <option value="Finance">Finance</option>
+                                <option value="Operations">Operations</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Sales">Sales</option>
+                            </select>
+                            <span asp-validation-for="DepartmentName" class="text-danger"></span>
+                            <div class="invalid-feedback">
+                                Please select a department.
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-check">
+                                <input asp-for="IsCancelled" class="form-check-input" type="checkbox" />
+                                <label asp-for="IsCancelled" class="form-check-label">
+                                    Mark as Cancelled
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <hr class="my-4">
+                            <div class="d-flex gap-2">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-check-lg me-1"></i>
+                                    @(Model.MeetingId == 0 ? "Create Meeting" : "Update Meeting")
+                                </button>
+                                <a asp-controller="Meeting" asp-action="MeetingList" class="btn btn-secondary">
+                                    <i class="bi bi-arrow-left me-1"></i>
+                                    Back to List
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="bi bi-info-circle text-info me-2"></i>
+                        Guidelines
+                    </h5>
+                    <div class="alert alert-info">
+                        <h6 class="alert-heading">Meeting Guidelines:</h6>
+                        <ul class="mb-0 small">
+                            <li>Meeting date should be valid</li>
+                            <li>Select appropriate venue for meeting type</li>
+                            <li>Fields marked with * are required</li>
+                            <li>@(Model.MeetingId == 0 ? "New meeting will be created" : "Existing meeting will be updated")</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{
+@{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+<script>
+    // Bootstrap form validation
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            var forms = document.getElementsByClassName('needs-validation');
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    });
+</script>
