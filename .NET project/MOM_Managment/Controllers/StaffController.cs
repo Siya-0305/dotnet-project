@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
 using Mom_Managment.Models;
 using System.Data;
@@ -54,9 +55,10 @@ namespace MOM_System.Controllers
         {
             if (id == null)
             {
+                ViewBag.DepartmentList = FillDepartmentDropDown();
                 return View(new StaffModelView());
             }
-
+            ViewBag.DepartmentList = FillDepartmentDropDown();
             StaffModelView model = new StaffModelView();
             string connectionString = _configuration.GetConnectionString("ConnectionString");
 
@@ -78,6 +80,8 @@ namespace MOM_System.Controllers
                     model.EmailAddress = reader["EmailAddress"].ToString();
                 }
             }
+            ViewBag.DepartmentList = FillDepartmentDropDown();
+            return View("StaffAddEdit");
 
             return View(model);
         }
@@ -145,6 +149,33 @@ namespace MOM_System.Controllers
 
             TempData["SuccessMessage"] = "Staff deleted successfully!";
             return RedirectToAction("Index");
+        }
+        #endregion
+
+        #region Dropdown
+        [HttpPost]
+        public List<SelectListItem> FillDepartmentDropDown()
+        {
+            List<SelectListItem> List = new List<SelectListItem>();
+            string connectionString = _configuration.GetConnectionString("ConnectionString");
+            SqlConnection connect = new SqlConnection(connectionString);
+            connect.Open();
+
+            SqlCommand cmd = connect.CreateCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "PR_MOM_Department_DDL";
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                List.Add(new SelectListItem(
+                reader["DepartmentName"].ToString(),
+                reader["DepartmentID"].ToString()));
+            }
+            reader.Close();
+            connect.Close();
+
+            return List;
         }
         #endregion
     }

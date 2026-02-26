@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1xhQ73GLVKc=",
+  "dgSpecHash": "M1yjS0yhBBY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Siya\\Desktop\\dot-net-project\\.NET project\\MOM_Managment\\Mom_Managment.csproj",
+  "projectFilePath": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Mom_Managment.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Siya\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\Siya\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

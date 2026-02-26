@@ -4,7 +4,7 @@ namespace Mom_Managment.Models
 {
     public class StaffModelView
     {
-        [Key]
+        
         public int StaffId { get; set; }
 
         [Required(ErrorMessage = "Staff name is required.")]

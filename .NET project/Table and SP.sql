@@ -710,5 +710,11 @@ select * from MOM_MeetingVenue
 select * from MOM_Staff
 
 
-
+CREATE PROCEDURE [dbo].[PR_MOM_Department_DDL]
+AS
+BEGIN
+    SELECT DepartmentID, DepartmentName
+    FROM MOM_Department
+    ORDER BY DepartmentName
+END
 

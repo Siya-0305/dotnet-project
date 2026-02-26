@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Siya\\Desktop\\dot-net-project\\.NET project\\MOM_Managment\\Mom_Managment.csproj": {}
+    "D:\\dotnet-project\\.NET project\\MOM_Managment\\Mom_Managment.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Siya\\Desktop\\dot-net-project\\.NET project\\MOM_Managment\\Mom_Managment.csproj": {
+    "D:\\dotnet-project\\.NET project\\MOM_Managment\\Mom_Managment.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Siya\\Desktop\\dot-net-project\\.NET project\\MOM_Managment\\Mom_Managment.csproj",
+        "projectUniqueName": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Mom_Managment.csproj",
         "projectName": "Mom_Managment",
-        "projectPath": "C:\\Users\\Siya\\Desktop\\dot-net-project\\.NET project\\MOM_Managment\\Mom_Managment.csproj",
+        "projectPath": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Mom_Managment.csproj",
         "packagesPath": "C:\\Users\\Siya\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Siya\\Desktop\\dot-net-project\\.NET project\\MOM_Managment\\obj\\",
+        "outputPath": "D:\\dotnet-project\\.NET project\\MOM_Managment\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
