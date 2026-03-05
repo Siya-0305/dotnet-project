@@ -3,9 +3,10 @@ using Microsoft.Extensions.Configuration;
 using Mom_Managment.Models;
 using System.Data;
 using System.Data.SqlClient;
+using System.Reflection;
 
 namespace MOM_System.Controllers
-{ 
+{
     public class DepartmentController : Controller
     {
         #region Configuration
@@ -16,33 +17,87 @@ namespace MOM_System.Controllers
         }
         #endregion
 
-        #region DepartmentList
+        #region GetDepartmentList
+        [HttpGet]
         public IActionResult DepartmentList()
         {
-            List<DepartmentViewModel> List = new List<DepartmentViewModel>();
+            List<DepartmentViewModel> List = GetDepartments(null);
+            //string connectionString = _configuration.GetConnectionString("ConnectionString");
+            //SqlConnection connection = new SqlConnection(connectionString);
+            //connection.Open();
+
+            //SqlCommand cmd = connection.CreateCommand();
+            //cmd.CommandType = CommandType.StoredProcedure;
+            //cmd.CommandText = "SP_SelectAll_MOM_Department";
+            //SqlDataReader reader = cmd.ExecuteReader();
+
+            //while (reader.Read())
+            //{
+            //    DepartmentViewModel model = new DepartmentViewModel();
+            //    model.DepartmentID = Convert.ToInt32(reader["DepartmentID"]);
+            //    model.DepartmentName = reader["DepartmentName"].ToString();
+            //    model.Created = Convert.ToDateTime(reader["Created"]);
+            //    model.Modified = Convert.ToDateTime(reader["Modified"]);
+
+            //    List.Add(model);
+
+            //}
+            //connection.Close();
+            return View(List);
+
+        }
+        #endregion
+
+        #region postDepartmentList
+        [HttpPost]
+        public IActionResult DepartmentList(IFormCollection formData)
+        {
+            string searchText = formData["SearchText"].ToString();
+
+            if (string.IsNullOrWhiteSpace(searchText))
+                searchText = null;
+
+            ViewBag.SearchText = searchText;
+
+            List<DepartmentViewModel> list = GetDepartments(searchText);
+            return View(list);
+        }
+        #endregion
+
+        #region GetDepartments
+        private List<DepartmentViewModel> GetDepartments(string searchText)
+        {
+            List<DepartmentViewModel> list = new List<DepartmentViewModel>();
+
             string connectionString = _configuration.GetConnectionString("ConnectionString");
             SqlConnection connection = new SqlConnection(connectionString);
-            connection.Open();
-
-            SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandType = CommandType.StoredProcedure;
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
             cmd.CommandText = "SP_SelectAll_MOM_Department";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            if (searchText != null)
+                cmd.Parameters.AddWithValue("@SearchText", searchText);
+            else
+                cmd.Parameters.AddWithValue("@SearchText", DBNull.Value);
+
+            connection.Open();
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
             {
-                DepartmentViewModel model = new DepartmentViewModel();
-                model.DepartmentID = Convert.ToInt32(reader["DepartmentID"]);
-                model.DepartmentName = reader["DepartmentName"].ToString();
-                model.Created = Convert.ToDateTime(reader["Created"]);
-                model.Modified = Convert.ToDateTime(reader["Modified"]);
+                DepartmentViewModel d = new DepartmentViewModel();
+                d.DepartmentID = Convert.ToInt32(reader["DepartmentId"]);
+                d.DepartmentName = reader["DepartmentName"].ToString();
+                d.Created = Convert.ToDateTime(reader["Created"]);
+                d.Modified = Convert.ToDateTime(reader["Modified"]);
 
-                List.Add(model);
-
+                list.Add(d);
             }
-            connection.Close();
-            return View(List);
 
+            reader.Close();
+            connection.Close();
+            return list;
         }
         #endregion
 

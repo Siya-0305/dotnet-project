@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Mom_Managment.Models;
 using System.Data;
 using System.Data.SqlClient;
+using System.Reflection;
 
 namespace MOM_System.Controllers
 {
@@ -19,35 +20,89 @@ namespace MOM_System.Controllers
         #endregion
 
         #region StaffList
+        [HttpGet]
         public IActionResult StaffList()
         {
-            List<StaffModelView> List = new List<StaffModelView>();
-            string connectionString = _configuration.GetConnectionString("ConnectionString");
-            SqlConnection connect = new SqlConnection(connectionString);
-            connect.Open();
+            List<StaffModelView> List = GetStaff(null);
+            //string connectionString = _configuration.GetConnectionString("ConnectionString");
+            //SqlConnection connect = new SqlConnection(connectionString);
+            //connect.Open();
 
-            SqlCommand cmd = connect.CreateCommand();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "PR_Staff_SelectAll";
-            SqlDataReader reader = cmd.ExecuteReader();
+            //SqlCommand cmd = connect.CreateCommand();
+            //cmd.CommandType = CommandType.StoredProcedure;
+            //cmd.CommandText = "PR_Staff_SelectAll";
+            //SqlDataReader reader = cmd.ExecuteReader();
 
-            while (reader.Read())
-            {
-                StaffModelView model = new StaffModelView();
-                model.StaffId = Convert.ToInt32(reader["StaffId"]);
-                model.StaffName = reader["StaffName"].ToString();
-                model.DepartmentName = (reader["DepartmentName"].ToString());
-                model.MobileNo = (reader["MobileNo"].ToString());
-                model.EmailAddress = (reader["EmailAddress"].ToString());
+            //while (reader.Read())
+            //{
+            //    StaffModelView model = new StaffModelView();
+            //    model.StaffId = Convert.ToInt32(reader["StaffId"]);
+            //    model.StaffName = reader["StaffName"].ToString();
+            //    model.DepartmentName = (reader["DepartmentName"].ToString());
+            //    model.MobileNo = (reader["MobileNo"].ToString());
+            //    model.EmailAddress = (reader["EmailAddress"].ToString());
 
-                List.Add(model);
+            //    List.Add(model);
 
-            }
-            connect.Close();
+            //}
+            //connect.Close();
             return View(List);
 
         }
 
+        #endregion
+
+        #region postStaffList
+        [HttpPost]
+        public IActionResult StaffList(IFormCollection formData)
+        {
+            string searchText = formData["SearchText"].ToString();
+
+            if (string.IsNullOrWhiteSpace(searchText))
+                searchText = null;
+
+            ViewBag.SearchText = searchText;
+
+            List<StaffModelView> list = GetStaff(searchText);
+            return View(list);
+        }
+        #endregion
+
+        #region GetDepartments
+        private List<StaffModelView> GetStaff(string searchText)
+        {
+            List<StaffModelView> list = new List<StaffModelView>();
+
+            string connectionString = _configuration.GetConnectionString("ConnectionString");
+            SqlConnection connection = new SqlConnection(connectionString);
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "PR_Staff_SelectAll";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            if (searchText != null)
+                cmd.Parameters.AddWithValue("@SearchText", searchText);
+            else
+                cmd.Parameters.AddWithValue("@SearchText", DBNull.Value);
+
+            connection.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                StaffModelView s = new StaffModelView();
+                s.StaffId = Convert.ToInt32(reader["StaffId"]);
+                s.StaffName = reader["StaffName"].ToString();
+                s.DepartmentName = (reader["DepartmentName"].ToString());
+                s.MobileNo = (reader["MobileNo"].ToString());
+                s.EmailAddress = (reader["EmailAddress"].ToString());
+
+                list.Add(s);
+            }
+            reader.Close();
+            connection.Close();
+            return list;
+        }
         #endregion
 
         #region StaffAddEdit
@@ -89,8 +144,18 @@ namespace MOM_System.Controllers
 
         #region Save
         [HttpPost]
-        public IActionResult Save(StaffModelView model)
+        public IActionResult Save([FromForm] StaffModelView model)
         {
+            ModelState.Remove("StaffImage");
+
+            if (model.StaffImage != null)
+            {
+                string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", model.StaffImage.FileName);
+                FileStream stream = new FileStream(path, FileMode.Create);
+                model.StaffImage.CopyTo(stream);
+                stream.Close();
+            }
+
             if (!ModelState.IsValid)
             {
                 return View("StaffAddEdit", model);
@@ -120,7 +185,7 @@ namespace MOM_System.Controllers
                 cmd.Parameters.AddWithValue("@EmailAddress", model.EmailAddress);
 
                 cmd.Parameters.AddWithValue("@Remarks",
-    string.IsNullOrEmpty(model.Remarks) ? DBNull.Value : model.Remarks);
+                string.IsNullOrEmpty(model.Remarks) ? DBNull.Value : model.Remarks);
 
                 connection.Open();
                 cmd.ExecuteNonQuery();

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
 using Mom_Managment.Models;
 using System.Data;
@@ -139,5 +140,6 @@ namespace Mom_Managment.Controllers
             return RedirectToAction("MeetingTypeList");
         }
         #endregion
+
     }
 }

@@ -57,9 +57,13 @@ EXEC SP_Delete_MOM_Department
 
 --SelectAll--
 CREATE or alter PROCEDURE SP_SelectAll_MOM_Department
+     @SearchText VARCHAR(255) = NULL
 AS
 BEGIN
-    SELECT DepartmentID,DepartmentName,Created,Modified FROM MOM_Department
+    SELECT DepartmentID,DepartmentName,Created,Modified 
+	FROM MOM_Department
+	 WHERE (@SearchText IS NULL 
+           OR DepartmentName LIKE '%' + @SearchText + '%')
 END
 
 --SelectByID--
@@ -144,9 +148,13 @@ EXEC SP_Delete_MOM_MeetingType
 
 --Select All--
 CREATE or alter PROCEDURE SP_SelectAll_MOM_MeetingType
+   @SearchText VARCHAR(255) = NULL
 AS
 BEGIN
-    SELECT MeetingTypeID,MeetingTypeName,Remarks,Created,Modified FROM MOM_MeetingType
+    SELECT MeetingTypeID,MeetingTypeName,Remarks,Created,Modified 
+	FROM MOM_MeetingType
+	 WHERE (@SearchText IS NULL 
+           OR MeetingTypeName LIKE '%' + @SearchText + '%')
 END
 
 --SelectByID--
@@ -217,7 +225,8 @@ EXEC SP_Delete_MOM_MeetingVenue
     @MeetingVenueID = 2
 
 --SELECTALL--
-CREATE PROCEDURE SP_SelectAll_MOM_MeetingVenue
+CREATE or alter PROCEDURE SP_SelectAll_MOM_MeetingVenue
+      @SearchText VARCHAR(255) = NULL
 AS
 BEGIN
    SELECT
@@ -226,7 +235,9 @@ BEGIN
     Created,
     Modified
 FROM MOM_MeetingVenue
-
+    WHERE (@SearchText IS NULL 
+           OR MeetingVenueName LIKE '%' + @SearchText + '%')
+END
 
 --SELECTBYID--
 CREATE or alter PROCEDURE SP_SelectByID_MOM_MeetingVenue
@@ -259,6 +270,7 @@ CREATE TABLE MOM_Staff (
 );
 -- 1. SelectAll Procedure for MOM_Staff
 CREATE OR ALTER PROCEDURE [dbo].[PR_Staff_SelectAll]
+ @SearchText VARCHAR(255) = NULL
 AS
 BEGIN
     SELECT s.StaffID,
@@ -272,10 +284,11 @@ BEGIN
            s.Modified
     FROM [dbo].[MOM_Staff] s
     INNER JOIN [dbo].[MOM_Department] d ON s.DepartmentID = d.DepartmentID
+	 WHERE (@SearchText IS NULL 
+           OR StaffName LIKE '%' + @SearchText + '%')
     ORDER BY s.StaffName
 END
 EXEC dbo.PR_Staff_SelectAll;
-
 
 -- 2. SelectByPK Procedure for MOM_Staff
 CREATE OR ALTER PROCEDURE [dbo].[PR_Staff_SelectByPK]
@@ -390,6 +403,7 @@ CREATE TABLE MOM_Meetings (
 );
 -- 1. SelectAll Procedure for MOM_Meetings
 CREATE OR ALTER PROCEDURE [dbo].[PR_Meetings_SelectAll]
+       @SearchText VARCHAR(255) = NULL
 AS
 BEGIN
     SELECT m.MeetingID,
@@ -411,6 +425,8 @@ BEGIN
     INNER JOIN [dbo].[MOM_MeetingVenue] mv ON m.MeetingVenueID = mv.MeetingVenueID
     INNER JOIN [dbo].[MOM_MeetingType] mt ON m.MeetingTypeID = mt.MeetingTypeID
     INNER JOIN [dbo].[MOM_Department] d ON m.DepartmentID = d.DepartmentID
+	 WHERE (@SearchText IS NULL 
+           OR MeetingID LIKE '%' + @SearchText + '%')
     ORDER BY m.MeetingDate DESC
 END
 
@@ -718,3 +734,32 @@ BEGIN
     ORDER BY DepartmentName
 END
 
+CREATE PROCEDURE [dbo].[PR_MOM_MeetingType_DDL]
+AS
+BEGIN
+    SELECT MeetingTypeID,MeetingTypeName
+    FROM MOM_MeetingType
+    ORDER BY MeetingTypeName
+END
+
+CREATE PROCEDURE PR_Meeting_DDL
+AS
+BEGIN
+    SELECT 
+        MeetingID,
+        MeetingTypeName
+    FROM 
+        MOM_Meetings
+    ORDER BY 
+        MeetingTypeName
+END
+
+CREATE OR ALTER PROCEDURE PR_MeetingVenue_DDL
+AS
+BEGIN
+    SELECT 
+        MeetingVenueID,
+        MeetingVenueName
+    FROM MOM_MeetingVenue
+    ORDER BY MeetingVenueName
+END

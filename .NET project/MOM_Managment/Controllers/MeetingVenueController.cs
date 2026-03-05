@@ -18,35 +18,90 @@ namespace Mom_Managment.Controllers
         #endregion
 
         #region MeetingVenueList
+        [HttpGet]
         public IActionResult MeetingVenueList()
         {
-            List<MeetingVenueViewModel> List = new List<MeetingVenueViewModel>();
+            List<MeetingVenueViewModel> List = GetMeetingVenue(null);
+            //string connectionString = _configuration.GetConnectionString("ConnectionString");
+            //SqlConnection connection = new SqlConnection(connectionString);
+            //connection.Open();
+
+            //SqlCommand cmd = connection.CreateCommand();
+            //cmd.CommandType = CommandType.StoredProcedure;
+            //cmd.CommandText = "SP_SelectAll_MOM_MeetingVenue";
+            //SqlDataReader reader = cmd.ExecuteReader();
+
+            //while (reader.Read())
+            //{
+
+            //    MeetingVenueViewModel model = new MeetingVenueViewModel();
+            //    model.MeetingVenueId = Convert.ToInt32(reader["MeetingVenueId"]);
+            //    model.MeetingVenueName = reader["MeetingVenueName"].ToString();
+
+            //    model.Created = Convert.ToDateTime(reader["Created"]);
+            //    model.Modified = Convert.ToDateTime(reader["Modified"]);
+
+            //    List.Add(model);
+
+            //}
+            //connection.Close();
+            return View(List);
+        }
+
+        #endregion
+
+        #region postMeetingVenueList
+        [HttpPost]
+        public IActionResult MeetingVenueList(IFormCollection formData)
+        {
+            string searchText = formData["SearchText"].ToString();
+
+            if (string.IsNullOrWhiteSpace(searchText))
+                searchText = null;
+
+            ViewBag.SearchText = searchText;
+
+            List<MeetingVenueViewModel> list = GetMeetingVenue(searchText);
+            return View(list);
+        }
+        #endregion
+
+        #region GetMeetingVenue
+        private List<MeetingVenueViewModel> GetMeetingVenue(string searchText)
+        {
+            List<MeetingVenueViewModel> list = new List<MeetingVenueViewModel>();
+
             string connectionString = _configuration.GetConnectionString("ConnectionString");
             SqlConnection connection = new SqlConnection(connectionString);
-            connection.Open();
-
-            SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandType = CommandType.StoredProcedure;
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
             cmd.CommandText = "SP_SelectAll_MOM_MeetingVenue";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            if (searchText != null)
+                cmd.Parameters.AddWithValue("@SearchText", searchText);
+            else
+                cmd.Parameters.AddWithValue("@SearchText", DBNull.Value);
+
+            connection.Open();
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
             {
+                MeetingVenueViewModel M = new MeetingVenueViewModel();
+                M.MeetingVenueId = Convert.ToInt32(reader["MeetingVenueId"]);
+                M.MeetingVenueName = reader["MeetingVenueName"].ToString();
 
-                MeetingVenueViewModel model = new MeetingVenueViewModel();
-                model.MeetingVenueId = Convert.ToInt32(reader["MeetingVenueId"]);
-                model.MeetingVenueName = reader["MeetingVenueName"].ToString();
+                M.Created = Convert.ToDateTime(reader["Created"]);
+                M.Modified = Convert.ToDateTime(reader["Modified"]);
 
-                model.Created = Convert.ToDateTime(reader["Created"]);
-                model.Modified = Convert.ToDateTime(reader["Modified"]);
-
-                List.Add(model);
-
+                list.Add(M);
             }
-            connection.Close();
-            return View(List);
-        }
 
+            reader.Close();
+            connection.Close();
+            return list;
+        }
         #endregion
 
         #region MeetingAddEdit

@@ -23,6 +23,7 @@ namespace Mom_Managment.Models
         [EmailAddress(ErrorMessage = "Invalid email address.")]
         public string EmailAddress { get; set; } = string.Empty;
         public string? Remarks { get; set; }
+        public IFormFile StaffImage { get; set; }
 
     }
 }

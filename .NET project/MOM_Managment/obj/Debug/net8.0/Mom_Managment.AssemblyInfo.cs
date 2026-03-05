@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Mom_Managment")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3e5d8279b5bc89c9220badde1fb878ee5012fdc0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+166e20f920c89f6511c04b89203a25690666c091")]
 [assembly: System.Reflection.AssemblyProductAttribute("Mom_Managment")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Mom_Managment")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

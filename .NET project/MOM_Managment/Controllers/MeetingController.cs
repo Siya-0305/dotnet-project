@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
 using Mom_Managment.Models;
 using System.Data;
 using System.Data.SqlClient;
+using System.Reflection;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MOM_System.Controllers
 {
@@ -18,34 +21,90 @@ namespace MOM_System.Controllers
         #endregion
 
         #region MeetingList
+        [HttpGet]
         public IActionResult MeetingList()
         {
-            List<MeetingViewModel> List = new List<MeetingViewModel>();
+            List<MeetingViewModel> List = GetMeeting(null);
+            //string connectionString = _configuration.GetConnectionString("ConnectionString");
+            //SqlConnection connection = new SqlConnection(connectionString);
+            //connection.Open();
+
+            //SqlCommand cmd = connection.CreateCommand();
+            //cmd.CommandType = CommandType.StoredProcedure;
+            //cmd.CommandText = "PR_Meetings_SelectAll";
+            //SqlDataReader reader = cmd.ExecuteReader();
+
+            //while (reader.Read())
+            //{
+            //    MeetingViewModel model = new MeetingViewModel();
+            //    model.MeetingId = Convert.ToInt32(reader["MeetingId"]);
+            //    model.MeetingTypeName = reader["MeetingTypeName"].ToString();
+            //    model.MeetingDate = Convert.ToDateTime(reader["MeetingDate"]);
+            //    model.MeetingDescription = reader["MeetingDescription"].ToString();
+            //    model.DepartmentName = reader["DepartmentName"].ToString();
+            //    model.MeetingVenueName = reader["MeetingVenueName"].ToString();
+
+            //    List.Add(model);
+
+            //}
+            //connection.Close();
+            return View(List);
+
+        }
+        #endregion
+
+        #region PostMeetingList
+        [HttpPost]
+        public IActionResult MeetingList(IFormCollection formData)
+        {
+            string searchText = formData["SearchText"].ToString();
+
+            if (string.IsNullOrWhiteSpace(searchText))
+                searchText = null;
+
+            ViewBag.SearchText = searchText;
+
+            List<MeetingViewModel> list = GetMeeting(searchText);
+            return View(list);
+        }
+        #endregion
+
+        #region GetMeeting
+        private List<MeetingViewModel> GetMeeting(string searchText)
+        {
+            List<MeetingViewModel> list = new List<MeetingViewModel>();
+
             string connectionString = _configuration.GetConnectionString("ConnectionString");
             SqlConnection connection = new SqlConnection(connectionString);
-            connection.Open();
-
-            SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandType = CommandType.StoredProcedure;
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
             cmd.CommandText = "PR_Meetings_SelectAll";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            if (searchText != null)
+                cmd.Parameters.AddWithValue("@SearchText", searchText);
+            else
+                cmd.Parameters.AddWithValue("@SearchText", DBNull.Value);
+
+            connection.Open();
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
             {
-                MeetingViewModel model = new MeetingViewModel();
-                model.MeetingId = Convert.ToInt32(reader["MeetingId"]);
-                model.MeetingTypeName = reader["MeetingTypeName"].ToString();
-                model.MeetingDate = Convert.ToDateTime(reader["MeetingDate"]);
-                model.MeetingDescription = reader["MeetingDescription"].ToString();
-                model.DepartmentName = reader["DepartmentName"].ToString();
-                model.MeetingVenueName = reader["MeetingVenueName"].ToString();
+                MeetingViewModel m = new MeetingViewModel();
+                m.MeetingId = Convert.ToInt32(reader["MeetingId"]);
+                m.MeetingTypeName = reader["MeetingTypeName"].ToString();
+                m.MeetingDate = Convert.ToDateTime(reader["MeetingDate"]);
+                m.MeetingDescription = reader["MeetingDescription"].ToString();
+                m.DepartmentName = reader["DepartmentName"].ToString();
+                m.MeetingVenueName = reader["MeetingVenueName"].ToString();
 
-                List.Add(model);
-
+                list.Add(m);
             }
-            connection.Close();
-            return View(List);
 
+            reader.Close();
+            connection.Close();
+            return list;
         }
 
         #endregion
@@ -53,7 +112,13 @@ namespace MOM_System.Controllers
         #region MeetingAddEdit
         public IActionResult MeetingAddEdit(int? id)
         {
+            ViewBag.DepartmentList = FillDropDown();
+            ViewBag.MeetingList = FillDropDown();
+            ViewBag.MeetingTypeList = FillMeetingTypeDropDown();
+            ViewBag.MeetingVenueList = FillMeetingVenueDropDown();
+
             if (id == null)
+                
                 return View(new MeetingViewModel());
 
             MeetingViewModel model = new();
@@ -137,5 +202,88 @@ namespace MOM_System.Controllers
             return RedirectToAction("MeetingList");
         }
         #endregion
+
+        #region MeetingDropdown
+        [HttpPost]
+        public List<SelectListItem> FillDropDown()
+        {
+            List<SelectListItem> List = new List<SelectListItem>();
+            string connectionString = _configuration.GetConnectionString("ConnectionString");
+            SqlConnection connect = new SqlConnection(connectionString);
+            connect.Open();
+
+            SqlCommand cmd = connect.CreateCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "PR_MOM_Department_DDL";
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                List.Add(new SelectListItem(
+                reader["DepartmentName"].ToString(),
+                reader["DepartmentID"].ToString()));
+
+            }
+            reader.Close();
+            connect.Close();
+
+            return List;
+        }
+        #endregion
+
+        #region MeetingVenue Dropdown
+        public List<SelectListItem> FillMeetingVenueDropDown()
+        {
+            List<SelectListItem> List = new List<SelectListItem>();
+            string connectionString = _configuration.GetConnectionString("ConnectionString");
+            SqlConnection connect = new SqlConnection(connectionString);
+            connect.Open();
+
+            SqlCommand cmd = connect.CreateCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "PR_MeetingVenue_DDL";
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                List.Add(new SelectListItem(
+                reader["MeetingVenueName"].ToString(),
+                reader["MeetingVenueID"].ToString()));
+
+            }
+            reader.Close();
+            connect.Close();
+
+            return List;
+        }
+        #endregion
+
+        #region MeetingType Dropdown
+        public List<SelectListItem> FillMeetingTypeDropDown()
+        {
+            List<SelectListItem> List = new List<SelectListItem>();
+            string connectionString = _configuration.GetConnectionString("ConnectionString");
+            SqlConnection connect = new SqlConnection(connectionString);
+            connect.Open();
+
+            SqlCommand cmd = connect.CreateCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "PR_MOM_MeetingType_DDL";
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                List.Add(new SelectListItem(
+                reader["MeetingTypeName"].ToString(),
+                reader["MeetingTypeID"].ToString()));
+
+            }
+            reader.Close();
+            connect.Close();
+
+            return List;
+        }
+        #endregion
+
     }
 }

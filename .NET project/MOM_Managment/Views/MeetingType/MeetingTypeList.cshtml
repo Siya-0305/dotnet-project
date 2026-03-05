@@ -16,6 +16,34 @@
     </nav>
 </div>
 
+<!-- 🔍 SEARCH FORM -->
+<div class="card-body pb-0">
+    <form asp-action="MeetingTypeList" method="post" class="mb-3">
+        <div class="row g-2 align-items-center">
+
+            <div class="col-md-4">
+                <input type="text"
+                       name="SearchText"
+                       value="@ViewBag.SearchText"
+                       class="form-control"
+                       placeholder="Search MeetingType Name..." />
+            </div>
+
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-search"></i> Search
+                </button>
+
+                <a asp-action="MeetingTypeList"
+                   class="btn btn-secondary">
+                    Reset
+                </a>
+            </div>
+
+        </div>
+    </form>
+</div>
+
 <section class="section">
     <div class="row">
         <div class="col-lg-12">

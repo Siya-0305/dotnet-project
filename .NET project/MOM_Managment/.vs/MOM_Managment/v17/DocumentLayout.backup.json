@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "D:\\dotnet-project\\.NET project\\MOM_Managment\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|d:\\dotnet-project\\.net project\\mom_managment\\controllers\\meetingvenuecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|solutionrelative:controllers\\meetingvenuecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|d:\\dotnet-project\\.net project\\mom_managment\\controllers\\meetingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|solutionrelative:controllers\\meetingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|d:\\dotnet-project\\.net project\\mom_managment\\controllers\\staffcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|solutionrelative:controllers\\staffcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|d:\\dotnet-project\\.net project\\mom_managment\\views\\staff\\staffaddedit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|solutionrelative:views\\staff\\staffaddedit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|d:\\dotnet-project\\.net project\\mom_managment\\models\\staffmodelview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|solutionrelative:models\\staffmodelview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,48 +18,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MeetingVenueController.cs",
-              "DocumentMoniker": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Controllers\\MeetingVenueController.cs",
-              "RelativeDocumentMoniker": "Controllers\\MeetingVenueController.cs",
-              "ToolTip": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Controllers\\MeetingVenueController.cs*",
-              "RelativeToolTip": "Controllers\\MeetingVenueController.cs*",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAI0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-26T13:31:26.625Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "StaffModelView.cs",
-              "DocumentMoniker": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Models\\StaffModelView.cs",
-              "RelativeDocumentMoniker": "Models\\StaffModelView.cs",
-              "ToolTip": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Models\\StaffModelView.cs",
-              "RelativeToolTip": "Models\\StaffModelView.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAIAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "MeetingController.cs",
+              "DocumentMoniker": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Controllers\\MeetingController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MeetingController.cs",
+              "ToolTip": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Controllers\\MeetingController.cs*",
+              "RelativeToolTip": "Controllers\\MeetingController.cs*",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAowFkAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-26T07:59:28.693Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "StaffAddEdit.cshtml",
-              "DocumentMoniker": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Views\\Staff\\StaffAddEdit.cshtml",
-              "RelativeDocumentMoniker": "Views\\Staff\\StaffAddEdit.cshtml",
-              "ToolTip": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Views\\Staff\\StaffAddEdit.cshtml",
-              "RelativeToolTip": "Views\\Staff\\StaffAddEdit.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-26T07:59:47.28Z"
+              "WhenOpened": "2026-03-05T07:53:48.808Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -77,9 +45,9 @@
               "RelativeDocumentMoniker": "Controllers\\StaffController.cs",
               "ToolTip": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Controllers\\StaffController.cs",
               "RelativeToolTip": "Controllers\\StaffController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAALYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAEcAAAAAAAAAAAA9wE8AAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-26T07:49:57.288Z",
+              "WhenOpened": "2026-03-05T07:22:59.859Z",
               "EditorCaption": ""
             }
           ]
