@@ -112,8 +112,7 @@ namespace MOM_System.Controllers
         #region MeetingAddEdit
         public IActionResult MeetingAddEdit(int? id)
         {
-            ViewBag.DepartmentList = FillDropDown();
-            ViewBag.MeetingList = FillDropDown();
+            ViewBag.MeetingList = FillMeetingDropdown();
             ViewBag.MeetingTypeList = FillMeetingTypeDropDown();
             ViewBag.MeetingVenueList = FillMeetingVenueDropDown();
 
@@ -205,7 +204,7 @@ namespace MOM_System.Controllers
 
         #region MeetingDropdown
         [HttpPost]
-        public List<SelectListItem> FillDropDown()
+        public List<SelectListItem> FillMeetingDropdown()
         {
             List<SelectListItem> List = new List<SelectListItem>();
             string connectionString = _configuration.GetConnectionString("ConnectionString");
@@ -214,14 +213,14 @@ namespace MOM_System.Controllers
 
             SqlCommand cmd = connect.CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "PR_MOM_Department_DDL";
+            cmd.CommandText = "PR_Meeting_DDL";
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
             {
                 List.Add(new SelectListItem(
-                reader["DepartmentName"].ToString(),
-                reader["DepartmentID"].ToString()));
+                reader["MeetingTypeName"].ToString(),
+                reader["MeetingID"].ToString()));
 
             }
             reader.Close();

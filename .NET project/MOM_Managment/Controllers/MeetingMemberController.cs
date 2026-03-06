@@ -18,35 +18,91 @@ namespace MOM_System.Controllers
         #endregion
 
         #region MeetingMembersList
+        [HttpGet]
         public IActionResult MeetingMembersList()
+        {
+            List<MeetingMemberViewModel> list = GetMeetingMember(null);
+
+            //string connectString = _configuration.GetConnectionString("ConnectionString"); SqlConnection connect = new SqlConnection(connectString);
+            //connect.Open();
+
+            //SqlCommand cmd = connect.CreateCommand();
+            //cmd.CommandType = CommandType.StoredProcedure;
+            //cmd.CommandText = "PR_MeetingMember_SelectAll";
+            //SqlDataReader reader = cmd.ExecuteReader();
+
+            //while (reader.Read())
+            //{
+            //    MeetingMemberViewModel model = new MeetingMemberViewModel();
+            //    //model.MeetingName = reader["Meeting"].ToString();
+            //    model.DepartmentName = reader["DepartmentName"].ToString();
+            //    model.Remarks = reader["Remarks"].ToString();
+            //    model.MeetingMemberID = Convert.ToInt32(reader["MeetingMemberID"]);
+            //    model.MeetingID = Convert.ToInt32(reader["MeetingID"]);
+            //    model.StaffName = reader["StaffName"].ToString();
+            //    model.IsPresent = reader.GetBoolean("IsPresent");
+
+            //    list.Add(model);
+            //}
+            //connect.Close();
+            return View(list);
+        }
+
+        #endregion
+
+        #region MeetingMembersList
+        [HttpPost]
+        public IActionResult MeetingMembersList(IFormCollection formData)
+        {
+            string searchText = formData["SearchText"].ToString();
+
+            if (string.IsNullOrWhiteSpace(searchText))
+                searchText = null;
+
+            ViewBag.SearchText = searchText;
+
+            List<MeetingMemberViewModel> list = GetMeetingMember(searchText);
+            return View(list);
+        }
+        #endregion
+
+        #region GetMeetingMembers
+        private List<MeetingMemberViewModel> GetMeetingMember(string searchText)
         {
             List<MeetingMemberViewModel> list = new List<MeetingMemberViewModel>();
 
-            string connectString = _configuration.GetConnectionString("ConnectionString"); SqlConnection connect = new SqlConnection(connectString);
-            connect.Open();
-
-            SqlCommand cmd = connect.CreateCommand();
-            cmd.CommandType = CommandType.StoredProcedure;
+            string connectionString = _configuration.GetConnectionString("ConnectionString");
+            SqlConnection connection = new SqlConnection(connectionString);
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
             cmd.CommandText = "PR_MeetingMember_SelectAll";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            if (searchText != null)
+                cmd.Parameters.AddWithValue("@SearchText", searchText);
+            else
+                cmd.Parameters.AddWithValue("@SearchText", DBNull.Value);
+
+            connection.Open();
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
             {
-                MeetingMemberViewModel model = new MeetingMemberViewModel();
-                //model.MeetingName = reader["Meeting"].ToString();
-                model.DepartmentName = reader["DepartmentName"].ToString();
-                model.Remarks = reader["Remarks"].ToString();
-                model.MeetingMemberID = Convert.ToInt32(reader["MeetingMemberID"]);
-                model.MeetingID = Convert.ToInt32(reader["MeetingID"]);
-                model.StaffName = reader["StaffName"].ToString();
-                model.IsPresent = reader.GetBoolean("IsPresent");
+                MeetingMemberViewModel M = new MeetingMemberViewModel();
+                M.DepartmentName = reader["DepartmentName"].ToString();
+                M.Remarks = reader["Remarks"].ToString();
+                M.MeetingMemberID = Convert.ToInt32(reader["MeetingMemberID"]);
+                M.MeetingID = Convert.ToInt32(reader["MeetingID"]);
+                M.StaffName = reader["StaffName"].ToString();
+                M.IsPresent = reader.GetBoolean("IsPresent");
 
-                list.Add(model);
+                list.Add(M);
             }
-            connect.Close();
-            return View(list);
-        }
 
+            reader.Close();
+            connection.Close();
+            return list;
+        }
         #endregion
 
         #region MeetingMembersAddEdit

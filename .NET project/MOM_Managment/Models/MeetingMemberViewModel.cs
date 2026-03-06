@@ -5,6 +5,7 @@ namespace Mom_Managment.Models
     public class MeetingMemberViewModel
     {
         public int MeetingMemberID { get; set; }
+        public string MeetingMemberName { get; set; }
 
         [Required(ErrorMessage = "Meeting is required")]
         public int MeetingID { get; set; }

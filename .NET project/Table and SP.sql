@@ -589,6 +589,7 @@ CREATE TABLE MOM_MeetingMember (
 );
 -- 1. SelectAll Procedure for MOM_MeetingMember
 CREATE OR ALTER PROCEDURE [dbo].[PR_MeetingMember_SelectAll]
+ @SearchText VARCHAR(255) = NULL
 AS
 BEGIN  
     SELECT 
@@ -604,6 +605,8 @@ BEGIN
     INNER JOIN MOM_Meetings m ON mm.MeetingID = m.MeetingID
     INNER JOIN MOM_Staff s ON mm.StaffID = s.StaffID
     INNER JOIN MOM_Department d ON s.DepartmentID = d.DepartmentID
+	WHERE (@SearchText IS NULL 
+           OR MeetingMemberID LIKE '%' + @SearchText + '%')
     ORDER BY m.MeetingDescription, s.StaffName
 END
 GO
@@ -742,14 +745,14 @@ BEGIN
     ORDER BY MeetingTypeName
 END
 
-CREATE PROCEDURE PR_Meeting_DDL
+CREATE or alter PROCEDURE PR_Meeting_DDL
 AS
 BEGIN
     SELECT 
         MeetingID,
         MeetingTypeName
     FROM 
-        MOM_Meetings
+        MOM_Meetings , MOM_MeetingType
     ORDER BY 
         MeetingTypeName
 END

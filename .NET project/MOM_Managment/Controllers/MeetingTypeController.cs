@@ -19,32 +19,88 @@ namespace Mom_Managment.Controllers
         #endregion
 
         #region MeetingList
+        [HttpGet]
         public IActionResult MeetingTypeList()
         {
-            List<MeetingTypeViewModel> List = new List<MeetingTypeViewModel>();
+            List<MeetingTypeViewModel> List = GetMeetingType(null);
+            //string connectionString = _configuration.GetConnectionString("ConnectionString");
+            //SqlConnection connection = new SqlConnection(connectionString);
+            //connection.Open();
+
+            //SqlCommand cmd = connection.CreateCommand();
+            //cmd.CommandType = CommandType.StoredProcedure;
+            //cmd.CommandText = "SP_SelectAll_MOM_MeetingType";
+            //SqlDataReader reader = cmd.ExecuteReader();
+
+            //while (reader.Read())
+            //{
+            //    MeetingTypeViewModel model = new MeetingTypeViewModel();
+            //    model.MeetingTypeId = Convert.ToInt32(reader["MeetingTypeId"]);
+            //    model.MeetingTypeName = reader["MeetingTypeName"].ToString();
+            //    model.Remarks = reader["Remarks"].ToString();
+            //    model.Created = Convert.ToDateTime(reader["Created"]);
+            //    model.Modified = Convert.ToDateTime(reader["Modified"]);
+
+            //    List.Add(model);
+
+            //}
+            //connection.Close();
+            return View(List);
+        }
+
+        #endregion
+
+        #region postMeetingTypeList
+        [HttpPost]
+        public IActionResult MeetingTypeList(IFormCollection formData)
+        {
+            string searchText = formData["SearchText"].ToString();
+
+            if (string.IsNullOrWhiteSpace(searchText))
+                searchText = null;
+
+            ViewBag.SearchText = searchText;
+
+            List<MeetingTypeViewModel> list = GetMeetingType(searchText);
+            return View(list);
+        }
+        #endregion
+
+        #region GetMeetingType
+        private List<MeetingTypeViewModel> GetMeetingType(string searchText)
+        {
+            List<MeetingTypeViewModel> list = new List<MeetingTypeViewModel>();
+
             string connectionString = _configuration.GetConnectionString("ConnectionString");
             SqlConnection connection = new SqlConnection(connectionString);
-            connection.Open();
-
-            SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandType = CommandType.StoredProcedure;
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
             cmd.CommandText = "SP_SelectAll_MOM_MeetingType";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            if (searchText != null)
+                cmd.Parameters.AddWithValue("@SearchText", searchText);
+            else
+                cmd.Parameters.AddWithValue("@SearchText", DBNull.Value);
+
+            connection.Open();
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
             {
-                MeetingTypeViewModel model = new MeetingTypeViewModel();
-                model.MeetingTypeId = Convert.ToInt32(reader["MeetingTypeId"]);
-                model.MeetingTypeName = reader["MeetingTypeName"].ToString();
-                model.Remarks = reader["Remarks"].ToString();
-                model.Created = Convert.ToDateTime(reader["Created"]);
-                model.Modified = Convert.ToDateTime(reader["Modified"]);
+                MeetingTypeViewModel M = new MeetingTypeViewModel();
+                M.MeetingTypeId = Convert.ToInt32(reader["MeetingTypeId"]);
+                M.MeetingTypeName = reader["MeetingTypeName"].ToString();
+                M.Remarks = reader["Remarks"].ToString();
+                M.Created = Convert.ToDateTime(reader["Created"]);
+                M.Modified = Convert.ToDateTime(reader["Modified"]);
 
-                List.Add(model);
-
+                list.Add(M);
             }
+
+            reader.Close();
             connection.Close();
-            return View(List);
+            return list;
         }
 
         #endregion

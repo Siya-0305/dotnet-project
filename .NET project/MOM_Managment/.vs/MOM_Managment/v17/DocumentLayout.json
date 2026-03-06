@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "D:\\dotnet-project\\.NET project\\MOM_Managment\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|d:\\dotnet-project\\.net project\\mom_managment\\controllers\\meetingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|solutionrelative:controllers\\meetingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|d:\\dotnet-project\\.net project\\mom_managment\\controllers\\meetingtypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|solutionrelative:controllers\\meetingtypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,14 +23,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "MeetingController.cs",
-              "DocumentMoniker": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Controllers\\MeetingController.cs",
-              "RelativeDocumentMoniker": "Controllers\\MeetingController.cs",
-              "ToolTip": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Controllers\\MeetingController.cs",
-              "RelativeToolTip": "Controllers\\MeetingController.cs",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAowFkAAAA3AAAAAAAAAA==",
+              "Title": "MeetingTypeController.cs",
+              "DocumentMoniker": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Controllers\\MeetingTypeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MeetingTypeController.cs",
+              "ToolTip": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Controllers\\MeetingTypeController.cs",
+              "RelativeToolTip": "Controllers\\MeetingTypeController.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAuwEQAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-05T07:53:48.808Z",
+              "WhenOpened": "2026-03-06T11:24:58.505Z",
               "EditorCaption": ""
             }
           ]
