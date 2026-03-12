@@ -113,7 +113,7 @@ namespace MOM_System.Controllers
         public IActionResult MeetingAddEdit(int? id)
         {
             ViewBag.MeetingList = FillMeetingDropdown();
-            ViewBag.MeetingTypeList = FillMeetingTypeDropDown();
+            ViewBag.MeetingDepartmentList = FillDepartmentDropDown();
             ViewBag.MeetingVenueList = FillMeetingVenueDropDown();
 
             if (id == null)
@@ -213,14 +213,14 @@ namespace MOM_System.Controllers
 
             SqlCommand cmd = connect.CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "PR_Meeting_DDL";
+            cmd.CommandText = "PR_MOM_MeetingType_DDL";
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
             {
                 List.Add(new SelectListItem(
                 reader["MeetingTypeName"].ToString(),
-                reader["MeetingID"].ToString()));
+                reader["MeetingTypeID"].ToString()));
 
             }
             reader.Close();
@@ -257,8 +257,9 @@ namespace MOM_System.Controllers
         }
         #endregion
 
-        #region MeetingType Dropdown
-        public List<SelectListItem> FillMeetingTypeDropDown()
+        #region DepartmentDropDown
+        [HttpPost]
+        public List<SelectListItem> FillDepartmentDropDown()
         {
             List<SelectListItem> List = new List<SelectListItem>();
             string connectionString = _configuration.GetConnectionString("ConnectionString");
@@ -267,15 +268,14 @@ namespace MOM_System.Controllers
 
             SqlCommand cmd = connect.CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "PR_MOM_MeetingType_DDL";
+            cmd.CommandText = "PR_MOM_Department_DDL";
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
             {
                 List.Add(new SelectListItem(
-                reader["MeetingTypeName"].ToString(),
-                reader["MeetingTypeID"].ToString()));
-
+                reader["DepartmentName"].ToString(),
+                reader["DepartmentID"].ToString()));
             }
             reader.Close();
             connect.Close();

@@ -19,6 +19,8 @@
     </nav>
 </div>
 
+@* <img src="~/assets/img/download.jpg" alt="card"> *@
+
 <section class="section">
     <div class="row">
         <div class="col-lg-8">
@@ -31,7 +33,7 @@
 
                     <form asp-controller="Department" asp-action="Save" method="post" class="row g-3 needs-validation" novalidate>
                         <input asp-for="DepartmentID" type="hidden" />
-                        @* <input asp-for="Created" type="hidden" /> *@
+                        <input asp-for="Created" type="hidden" />
 
                         <div class="col-md-12">
                             <label asp-for="DepartmentName" class="form-label">Department Name *</label>
@@ -39,6 +41,13 @@
                             <span asp-validation-for="DepartmentName" class="text-danger"></span>
                             
                         </div>
+                        @* @using (Html.BeginForm())
+                        {
+                           <div>
+                                <label>DepartmentName</label>
+                                 @Html.TextBoxFor(m => m.DepartmentName)
+                           </div>
+                         } *@
 
                         <div class="col-md-6">
                             <label class="form-label">Created Date</label>

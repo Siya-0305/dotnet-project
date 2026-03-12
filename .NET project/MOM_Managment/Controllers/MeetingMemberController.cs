@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
 using Mom_Managment.Models;
 using System.Data;
@@ -17,7 +18,7 @@ namespace MOM_System.Controllers
         }
         #endregion
 
-        #region MeetingMembersList
+        #region GetMeetingMembersList
         [HttpGet]
         public IActionResult MeetingMembersList()
         {
@@ -50,7 +51,7 @@ namespace MOM_System.Controllers
 
         #endregion
 
-        #region MeetingMembersList
+        #region PostMeetingMembersList
         [HttpPost]
         public IActionResult MeetingMembersList(IFormCollection formData)
         {

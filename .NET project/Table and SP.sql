@@ -745,17 +745,6 @@ BEGIN
     ORDER BY MeetingTypeName
 END
 
-CREATE or alter PROCEDURE PR_Meeting_DDL
-AS
-BEGIN
-    SELECT 
-        MeetingID,
-        MeetingTypeName
-    FROM 
-        MOM_Meetings , MOM_MeetingType
-    ORDER BY 
-        MeetingTypeName
-END
 
 CREATE OR ALTER PROCEDURE PR_MeetingVenue_DDL
 AS

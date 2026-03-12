@@ -104,21 +104,17 @@ namespace MOM_System.Controllers
         #region DepartmentAddEdit
         public IActionResult DepartmentAddEdit(int? id)
         {
-            if (id == null)
-            {
-                return View(new DepartmentViewModel());
-            }
-
             DepartmentViewModel model = new DepartmentViewModel();
-            string connectionString = _configuration.GetConnectionString("ConnectionString");
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            if (id > 0)
             {
-                SqlCommand cmd = new SqlCommand("SP_SelectByID_MOM_Department", connection);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@DepartmentID", id);
+                string connectString = _configuration.GetConnectionString("ConnectionString");
+                SqlConnection connect = new SqlConnection(connectString);
+                connect.Open();
 
-                connection.Open();
+                SqlCommand cmd = connect.CreateCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "SP_SelectByID_MOM_Department";
+                cmd.Parameters.Add("@DepartmentID", SqlDbType.Int).Value = id;
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 if (reader.Read())
@@ -126,6 +122,7 @@ namespace MOM_System.Controllers
                     model.DepartmentID = Convert.ToInt32(reader["DepartmentID"]);
                     model.DepartmentName = reader["DepartmentName"].ToString();
                 }
+                connect.Close();
             }
 
             return View(model);
@@ -171,7 +168,7 @@ namespace MOM_System.Controllers
         #endregion
 
         #region Deleterecord
-        [HttpPost]
+
         [HttpPost]
         public IActionResult Delete(int id)
         {

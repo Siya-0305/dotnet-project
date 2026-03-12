@@ -6,38 +6,32 @@ namespace Mom_Managment.Controllers
 {
     public class AccountController : Controller
     {
-        [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
-
         [HttpPost]
-        public IActionResult Register(string Username, string Role, string Password, string ConfirmPassword, int? StaffId)
+        public IActionResult Register(RegistrationViewModel model)
         {
-            if (Password != ConfirmPassword)
+            if (ModelState.IsValid)
             {
-                ViewBag.Error = "Passwords do not match";
-                return View();
-            }
 
-            return RedirectToAction("Login");
+                return RedirectToAction("Login");
+            }
+            return View(model);
         }
         public IActionResult Login()
         {
             return View();
         }
+
         [HttpPost]
         public IActionResult Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
-                if (model.Username == "admin" && model.Password == "123")
-                {
-                    return RedirectToAction("Index", "Dashboard");
-                }
 
-                ViewBag.Error = "Invalid username or password";
+                return RedirectToAction("Index", "Dashboard");
             }
             return View(model);
         }

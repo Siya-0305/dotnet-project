@@ -71,7 +71,7 @@
                             <label asp-for="DepartmentName" class="form-label">Select Department</label>
                             <select asp-for="DepartmentName"
                                     class="form-control"
-                                    asp-items="ViewBag.DepartmentList">
+                                    asp-items="ViewBag.MeetingDepartmentList">
                                 <option value="" selected disabled>-- Select Department --</option>
                             </select>
                             <span asp-validation-for="DepartmentName" class="text-danger"></span>
@@ -129,7 +129,7 @@
     </div>
 </section>
 
-{
+
 @{
     await Html.RenderPartialAsync("_ValidationScriptsPartial");
 }
