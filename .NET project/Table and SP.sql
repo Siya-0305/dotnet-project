@@ -1,3 +1,30 @@
+create table MST_User(
+    UserID INT IDENTITY(1,1) PRIMARY KEY,
+    UserName NVARCHAR(100) NOT NULL UNIQUE,
+	Password NVARCHAR(100),
+	IsActive BIT,
+	Created DATETIME DEFAULT GETDATE(),
+	Modified DATETIME NOT NULL
+)
+Create Procedure [dbo].[PR_MST_User_SelectForLogin]
+@UserName nvarchar(50),
+@Password nvarchar(50)
+As 
+Begin
+Select 
+	MST_User.UserID,
+	MST_User.UserName,
+	MST_User.Password,
+	MST_User.IsActive,
+	MST_User.Created,
+	MST_User.Modified
+From MST_User
+Where	[UserName] = @UserName
+And		[Password] = @Password
+End
+
+
+
 CREATE TABLE MOM_Department (
     DepartmentID INT IDENTITY(1,1) PRIMARY KEY,
     DepartmentName NVARCHAR(100) NOT NULL UNIQUE,
@@ -727,6 +754,7 @@ select * from MOM_Meetings
 select * from MOM_MeetingType
 select * from MOM_MeetingVenue
 select * from MOM_Staff
+select * from MST_User
 
 
 CREATE PROCEDURE [dbo].[PR_MOM_Department_DDL]
