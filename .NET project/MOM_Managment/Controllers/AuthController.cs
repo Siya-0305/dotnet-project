@@ -58,7 +58,7 @@ namespace Mom_Managment.Controllers
                 if (isValidUser)
                 {
                     HttpContext.Session.SetString("UserName", model.Username);
-                    return RedirectToAction("Index", "Department");
+                    return RedirectToAction("DepartmentList", "Department");
                 }
                 else
                 {

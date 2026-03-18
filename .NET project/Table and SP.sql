@@ -23,6 +23,10 @@ Where	[UserName] = @UserName
 And		[Password] = @Password
 End
 
+INSERT INTO MST_User (UserName, Password, IsActive, Modified)
+VALUES ('admin', '123', 1, GETDATE())
+
+EXEC PR_MST_User_SelectForLogin 'admin', '123'
 
 
 CREATE TABLE MOM_Department (
@@ -783,3 +787,4 @@ BEGIN
     FROM MOM_MeetingVenue
     ORDER BY MeetingVenueName
 END
+

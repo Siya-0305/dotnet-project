@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ClosedXML.Excel;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
 using Mom_Managment.Models;
@@ -144,17 +145,17 @@ namespace MOM_System.Controllers
 
         #region Save
         [HttpPost]
-        public IActionResult Save([FromForm] StaffModelView model)
+        public IActionResult Save(StaffModelView model)
         {
-            ModelState.Remove("StaffImage");
+            //ModelState.Remove("StaffImage");
 
-            if (model.StaffImage != null)
-            {
-                string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", model.StaffImage.FileName);
-                FileStream stream = new FileStream(path, FileMode.Create);
-                model.StaffImage.CopyTo(stream);
-                stream.Close();
-            }
+            //if (model.StaffImage != null)
+            //{
+            //    string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", model.StaffImage.FileName);
+            //    FileStream stream = new FileStream(path, FileMode.Create);
+            //    model.StaffImage.CopyTo(stream);
+            //    stream.Close();
+            //}
 
             if (!ModelState.IsValid)
             {
@@ -244,6 +245,73 @@ namespace MOM_System.Controllers
         }
         #endregion
 
+        #region ExportToExcel
+        [HttpGet]
+        public IActionResult ExportToExcel()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                string connStr = _configuration.GetConnectionString("ConnectionString");
 
+                using (SqlConnection conn = new SqlConnection(connStr))
+                {
+                    conn.Open();
+
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "PR_Staff_SelectAll";
+
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            dt.Load(dr);
+                        }
+                    }
+                }
+
+                using (var workbook = new XLWorkbook())
+                {
+                    var worksheet = workbook.Worksheets.Add("Staff");
+
+                    
+                    for (int i = 0; i < dt.Columns.Count; i++)
+                    {
+                        worksheet.Cell(1, i + 1).Value = dt.Columns[i].ColumnName;
+                        worksheet.Cell(1, i + 1).Style.Font.Bold = true;
+                    }
+
+                    
+                    for (int row = 0; row < dt.Rows.Count; row++)
+                    {
+                        for (int col = 0; col < dt.Columns.Count; col++)
+                        {
+                            worksheet.Cell(row + 2, col + 1).Value = dt.Rows[row][col]?.ToString();
+                        }
+                    }
+
+                    worksheet.Columns().AdjustToContents();
+
+                    using (var stream = new MemoryStream())
+                    {
+                        workbook.SaveAs(stream);
+                        var content = stream.ToArray();
+
+                        return File(
+                            content,
+                            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                            "StaffList.xlsx"
+                        );
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "Error exporting data: " + ex.Message;
+                return RedirectToAction("Index");
+            }
+        }
+        #endregion
     }
 }
+

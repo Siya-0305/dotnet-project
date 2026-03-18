@@ -1030,3 +1030,4 @@ wwwroot\vendor\tinymce\tinymce.min.js
 wwwroot\uploads\movie.txt
 wwwroot\assets\img\download.jpg
 wwwroot\assets\css\Login.css
+wwwroot\uploads\lab manual.pdf

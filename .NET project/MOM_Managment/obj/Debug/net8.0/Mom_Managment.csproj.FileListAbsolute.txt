@@ -40,3 +40,11 @@ D:\dotnet-project\.NET project\MOM_Managment\obj\Debug\net8.0\refint\Mom_Managme
 D:\dotnet-project\.NET project\MOM_Managment\obj\Debug\net8.0\Mom_Managment.pdb
 D:\dotnet-project\.NET project\MOM_Managment\obj\Debug\net8.0\Mom_Managment.genruntimeconfig.cache
 D:\dotnet-project\.NET project\MOM_Managment\obj\Debug\net8.0\ref\Mom_Managment.dll
+D:\dotnet-project\.NET project\MOM_Managment\bin\Debug\net8.0\ClosedXML.dll
+D:\dotnet-project\.NET project\MOM_Managment\bin\Debug\net8.0\ClosedXML.Parser.dll
+D:\dotnet-project\.NET project\MOM_Managment\bin\Debug\net8.0\DocumentFormat.OpenXml.dll
+D:\dotnet-project\.NET project\MOM_Managment\bin\Debug\net8.0\DocumentFormat.OpenXml.Framework.dll
+D:\dotnet-project\.NET project\MOM_Managment\bin\Debug\net8.0\ExcelNumberFormat.dll
+D:\dotnet-project\.NET project\MOM_Managment\bin\Debug\net8.0\RBush.dll
+D:\dotnet-project\.NET project\MOM_Managment\bin\Debug\net8.0\SixLabors.Fonts.dll
+D:\dotnet-project\.NET project\MOM_Managment\bin\Debug\net8.0\System.IO.Packaging.dll

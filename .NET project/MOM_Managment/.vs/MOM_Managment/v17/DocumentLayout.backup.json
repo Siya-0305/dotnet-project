@@ -3,20 +3,16 @@
   "WorkspaceRootPath": "D:\\dotnet-project\\.NET project\\MOM_Managment\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|d:\\dotnet-project\\.net project\\mom_managment\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|d:\\dotnet-project\\.net project\\mom_managment\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|d:\\dotnet-project\\.net project\\mom_managment\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|solutionrelative:views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|d:\\dotnet-project\\.net project\\mom_managment\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|d:\\dotnet-project\\.net project\\mom_managment\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|solutionrelative:models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|d:\\dotnet-project\\.net project\\mom_managment\\filter\\checkaccess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|solutionrelative:filter\\checkaccess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,53 +31,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAB4AAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-16T04:39:30.422Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Views\\Auth\\Login.cshtml",
-              "RelativeDocumentMoniker": "Views\\Auth\\Login.cshtml",
-              "ToolTip": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Views\\Auth\\Login.cshtml",
-              "RelativeToolTip": "Views\\Auth\\Login.cshtml",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAB0AAABYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-16T03:54:40.764Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UserModel.cs",
-              "DocumentMoniker": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Models\\UserModel.cs",
-              "RelativeDocumentMoniker": "Models\\UserModel.cs",
-              "ToolTip": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Models\\UserModel.cs",
-              "RelativeToolTip": "Models\\UserModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-16T03:41:43.145Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "AuthController.cs",
               "DocumentMoniker": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
               "ToolTip": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Controllers\\AuthController.cs",
               "RelativeToolTip": "Controllers\\AuthController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAA2AAAAAAAAAA==",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAgwD4AAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-16T03:36:42.018Z",
+              "WhenOpened": "2026-03-18T13:04:18.242Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAB4AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T12:57:05.508Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CheckAccess.cs",
+              "DocumentMoniker": "D:\\dotnet-project\\.NET project\\MOM_Managment\\filter\\CheckAccess.cs",
+              "RelativeDocumentMoniker": "filter\\CheckAccess.cs",
+              "ToolTip": "D:\\dotnet-project\\.NET project\\MOM_Managment\\filter\\CheckAccess.cs",
+              "RelativeToolTip": "filter\\CheckAccess.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T12:55:59.373Z",
               "EditorCaption": ""
             }
           ]
