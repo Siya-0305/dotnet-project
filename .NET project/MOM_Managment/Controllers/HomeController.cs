@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Mom_Managment.filter;
 using Mom_Managment.Models;
 using System.Data;
 using System.Data.SqlClient;
@@ -6,6 +7,7 @@ using System.Diagnostics;
 
 namespace Mom_Managment.Controllers;
 
+[CheckAccess]
 public class HomeController : Controller
 {
     private readonly IConfiguration _configuration;

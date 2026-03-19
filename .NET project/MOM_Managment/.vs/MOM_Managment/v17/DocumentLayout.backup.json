@@ -7,12 +7,32 @@
       "RelativeMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|d:\\dotnet-project\\.net project\\mom_managment\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|d:\\dotnet-project\\.net project\\mom_managment\\controllers\\staffcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|solutionrelative:controllers\\staffcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|d:\\dotnet-project\\.net project\\mom_managment\\filter\\checkaccess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|solutionrelative:filter\\checkaccess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|d:\\dotnet-project\\.net project\\mom_managment\\controllers\\meetingvenuecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|solutionrelative:controllers\\meetingvenuecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|d:\\dotnet-project\\.net project\\mom_managment\\controllers\\meetingtypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|solutionrelative:controllers\\meetingtypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|d:\\dotnet-project\\.net project\\mom_managment\\controllers\\meetingmembercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|solutionrelative:controllers\\meetingmembercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|d:\\dotnet-project\\.net project\\mom_managment\\controllers\\meetingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|solutionrelative:controllers\\meetingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|d:\\dotnet-project\\.net project\\mom_managment\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|d:\\dotnet-project\\.net project\\mom_managment\\controllers\\departmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6BC8C82-663B-41CD-989D-744CDF017FEA}|Mom_Managment.csproj|solutionrelative:controllers\\departmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -36,35 +56,100 @@
               "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
               "ToolTip": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Controllers\\AuthController.cs",
               "RelativeToolTip": "Controllers\\AuthController.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAgwD4AAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAADwvxgAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T13:04:18.242Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAB4AAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T12:57:05.508Z",
+              "WhenOpened": "2026-03-19T08:07:09.24Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "CheckAccess.cs",
-              "DocumentMoniker": "D:\\dotnet-project\\.NET project\\MOM_Managment\\filter\\CheckAccess.cs",
-              "RelativeDocumentMoniker": "filter\\CheckAccess.cs",
-              "ToolTip": "D:\\dotnet-project\\.NET project\\MOM_Managment\\filter\\CheckAccess.cs",
-              "RelativeToolTip": "filter\\CheckAccess.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Title": "MeetingVenueController.cs",
+              "DocumentMoniker": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Controllers\\MeetingVenueController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MeetingVenueController.cs",
+              "ToolTip": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Controllers\\MeetingVenueController.cs",
+              "RelativeToolTip": "Controllers\\MeetingVenueController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T12:55:59.373Z",
+              "WhenOpened": "2026-03-19T08:06:05.009Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MeetingTypeController.cs",
+              "DocumentMoniker": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Controllers\\MeetingTypeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MeetingTypeController.cs",
+              "ToolTip": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Controllers\\MeetingTypeController.cs",
+              "RelativeToolTip": "Controllers\\MeetingTypeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-19T08:05:58.406Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MeetingMemberController.cs",
+              "DocumentMoniker": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Controllers\\MeetingMemberController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MeetingMemberController.cs",
+              "ToolTip": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Controllers\\MeetingMemberController.cs",
+              "RelativeToolTip": "Controllers\\MeetingMemberController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-19T08:05:51.22Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MeetingController.cs",
+              "DocumentMoniker": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Controllers\\MeetingController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MeetingController.cs",
+              "ToolTip": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Controllers\\MeetingController.cs",
+              "RelativeToolTip": "Controllers\\MeetingController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-19T08:05:42.925Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-19T08:05:28.291Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DepartmentController.cs",
+              "DocumentMoniker": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Controllers\\DepartmentController.cs",
+              "RelativeDocumentMoniker": "Controllers\\DepartmentController.cs",
+              "ToolTip": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Controllers\\DepartmentController.cs",
+              "RelativeToolTip": "Controllers\\DepartmentController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-19T08:03:30.817Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "StaffController.cs",
+              "DocumentMoniker": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Controllers\\StaffController.cs",
+              "RelativeDocumentMoniker": "Controllers\\StaffController.cs",
+              "ToolTip": "D:\\dotnet-project\\.NET project\\MOM_Managment\\Controllers\\StaffController.cs",
+              "RelativeToolTip": "Controllers\\StaffController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-19T07:58:23.208Z",
               "EditorCaption": ""
             }
           ]

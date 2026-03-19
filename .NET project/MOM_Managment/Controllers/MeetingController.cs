@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
+using Mom_Managment.filter;
 using Mom_Managment.Models;
 using System.Data;
 using System.Data.SqlClient;
@@ -10,6 +11,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace MOM_System.Controllers
 {
+    [CheckAccess]
     public class MeetingController : Controller
     {
         #region configuration

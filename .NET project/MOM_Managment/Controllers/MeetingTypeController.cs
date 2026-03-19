@@ -1,12 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
+using Mom_Managment.filter;
 using Mom_Managment.Models;
 using System.Data;
 using System.Data.SqlClient;
 
 namespace Mom_Managment.Controllers
 {
+    [CheckAccess]
     public class MeetingTypeController : Controller
     {
         #region configuration

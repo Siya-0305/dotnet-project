@@ -17,7 +17,7 @@
     <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true">
     <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" asp-append-version="true">
     <!-- Template Main CSS File -->
-    <link href="~/assets/css/Login.css" rel="stylesheet" asp-append-version="true">
+    <link href="~/assets/css/style.css" rel="stylesheet" asp-append-version="true">
 </head>
 <body>
     <main>
@@ -26,8 +26,10 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
-                            <div class="d-flex justify-content-center py-4">                    
-                                    <span class="d-none d-lg-block">Mom_Managment</span>                                
+                            <div class="d-flex justify-content-center py-4">
+                                <a href="#" class="logo d-flex align-items-center w-auto">
+                                    <span class="d-none d-lg-block">NiceAdmin</span>
+                                </a>
                             </div><!-- End Logo -->
                             <div class="card mb-3">
                                 <div class="card-body">
@@ -35,7 +37,7 @@
                                         <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
                                         <p class="text-center small">Enter your username & password to login</p>
                                     </div>
-                                    <form class="row g-3 needs-validation" method="post" asp-controller="Auth" asp-action="Login">
+                                    <form class="row g-3 needs-validation" method="post" asp-controller="Auth" asp-action="UserLogin">
                                         @Html.AntiForgeryToken()
                                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                         <div class="col-12">

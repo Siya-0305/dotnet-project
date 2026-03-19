@@ -4,24 +4,13 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Mom_Managment.filter
 {
-    public class CheckAccess
+    public class CheckAccess : ActionFilterAttribute, IAuthorizationFilter
     {
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-            var endpoint = context.HttpContext.GetEndpoint();
-            var allowAnonymous = endpoint?.Metadata.GetMetadata<AllowAnonymousAttribute>();
-
-            // ✅ Skip if [AllowAnonymous]
-            if (allowAnonymous != null)
-                return;
-
-            var userName = context.HttpContext.Session.GetString("UserName");
-
-            // ✅ Check session
-            if (string.IsNullOrEmpty(userName))
+            if (context.HttpContext.Session.GetString("UserID") == null)
             {
-                context.Result = new RedirectToActionResult("Login", "Auth", null);
-                return;
+                context.Result = new RedirectResult("~/Auth/Login");
             }
         }
 

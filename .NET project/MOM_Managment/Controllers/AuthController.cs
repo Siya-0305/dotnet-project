@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace Mom_Managment.Controllers
 {
-    [AllowAnonymous]
+    
     public class AuthController : Controller
     {
         #region Configuration
@@ -17,59 +17,97 @@ namespace Mom_Managment.Controllers
             _configuration = configuration;
         }
         #endregion
-
-        [HttpGet]
         public IActionResult Login()
         {
-            if (HttpContext.Session.GetString("UserName") != null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            return View(new UserModel());
+            return View();
         }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Login(UserModel model)
+        public IActionResult UserLogin(UserModel userLoginModel)
         {
-            if (ModelState.IsValid)
+            try
             {
-                string sqlConnString = _configuration.GetConnectionString("ConnectionString");
-                bool isValidUser = false;
-
-                using (var sqlConnection = new SqlConnection(sqlConnString))
-                using (var sqlCommand = sqlConnection.CreateCommand())
+                if (ModelState.IsValid)
                 {
-                    sqlCommand.CommandType = CommandType.StoredProcedure;
-                    sqlCommand.CommandText = "PR_MST_User_SelectForLogin";
-                    sqlCommand.Parameters.AddWithValue("@Username", model.Username);
-                    sqlCommand.Parameters.AddWithValue("@Password", model.Password);
+                    string connectionString = this._configuration.GetConnectionString("ConnectionString");
 
+                    SqlConnection sqlConnection = new SqlConnection(connectionString);
                     sqlConnection.Open();
-                    using (var reader = sqlCommand.ExecuteReader())
+
+                    SqlCommand sqlCommand = new SqlCommand("PR_MST_User_SelectForLogin", sqlConnection);
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                    sqlCommand.Parameters.Add("@Username", SqlDbType.VarChar).Value = userLoginModel.Username;
+                    sqlCommand.Parameters.Add("@Password", SqlDbType.VarChar).Value = userLoginModel.Password;
+
+                    SqlDataReader reader = sqlCommand.ExecuteReader();
+
+                    if (reader.Read())
                     {
-                        if (reader.HasRows)
-                        {
-                            isValidUser = true;
-                        }
+                        HttpContext.Session.SetString("UserID", reader["UserID"].ToString());
+                        HttpContext.Session.SetString("UserName", reader["UserName"].ToString());
+
+                        reader.Close();
+                        sqlConnection.Close();
+
+                        return RedirectToAction("DepartmentList", "Department");
+                    }
+                    else
+                    {
+                        reader.Close();
+                        sqlConnection.Close();
+
+                        TempData["ErrorMessage"] = "User is not found";
+                        return RedirectToAction("Login", "Auth");
                     }
                 }
-
-                if (isValidUser)
-                {
-                    HttpContext.Session.SetString("UserName", model.Username);
-                    return RedirectToAction("DepartmentList", "Department");
-                }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                }
             }
-            return View(model);
+            catch (Exception e)
+            {
+                TempData["ErrorMessage"] = e.Message;
+            }
+
+            return RedirectToAction("Login");
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        //public IActionResult Login(UserModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        string sqlConnString = _configuration.GetConnectionString("ConnectionString");
+        //        bool isValidUser = false;
+
+        //        using (var sqlConnection = new SqlConnection(sqlConnString))
+        //        using (var sqlCommand = sqlConnection.CreateCommand())
+        //        {
+        //            sqlCommand.CommandType = CommandType.StoredProcedure;
+        //            sqlCommand.CommandText = "PR_MST_User_SelectForLogin";
+        //            sqlCommand.Parameters.AddWithValue("@Username", model.Username);
+        //            sqlCommand.Parameters.AddWithValue("@Password", model.Password);
+
+        //            sqlConnection.Open();
+        //            using (var reader = sqlCommand.ExecuteReader())
+        //            {
+        //                if (reader.HasRows)
+        //                {
+        //                    isValidUser = true;
+        //                }
+        //            }
+        //        }
+
+        //        if (isValidUser)
+        //        {
+        //            HttpContext.Session.SetString("UserName", model.Username);
+        //            return RedirectToAction("DepartmentList", "Department");
+        //        }
+        //        else
+        //        {
+        //            ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+        //        }
+        //    }
+        //    return View(model);
+        //}
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();

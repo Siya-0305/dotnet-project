@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Mom_Managment.filter;
 using Mom_Managment.Models;
 using System.Data;
 using System.Data.SqlClient;
@@ -7,6 +8,7 @@ using System.Reflection;
 
 namespace MOM_System.Controllers
 {
+    [CheckAccess]
     public class DepartmentController : Controller
     {
         #region Configuration
